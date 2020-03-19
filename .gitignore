@@ -1,0 +1,9 @@
+# Django .gitignore reccomendations based on https://stackoverflow.com/questions/47342905/what-type-files-should-be-put-into-gitignore-file-in-django-project #
+*.log
+*.pot
+*.pyc
+*__pycache__*
+db.sqlite3
+media
+
+virtualenv_dir
