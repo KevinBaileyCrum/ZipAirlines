@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from api.views import CapacityView, IndexView
+from api.views import CapacityView, CapacityViewIndex, IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view()),
-    path('capacity/', CapacityView.as_view())
+    path('capacity/', CapacityViewIndex.as_view()),
+    path('capacity<int:id>/', CapacityView.as_view())
 ]
 
