@@ -16,11 +16,22 @@ class IndexView(APIView):
 
 class CapacityView(APIView):
 
+    def findCapacity(self, planeId: int, passengerNum: int) -> int:
+        print(planeId)
+        print(passengerNum)
+        return 1
+
     def get(self, request):
         logger.error('request')
         logger.error(request.query_params)
         if request.query_params:
             logger.error('i exist')
+            for planeId, passengerNum in request.query_params.items():
+                print(planeId)
+                print(passengerNum)
+            #     self.findCapacity(planeId, passengerNum)
+            # for key in request.query_params:
+                # print(key)
             return Response({'test': 'it worked'})
         else:
             return Response(
