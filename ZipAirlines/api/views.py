@@ -15,15 +15,21 @@ class IndexView(APIView):
         )
 
 class CapacityView(APIView):
-    def runFunc(self):
-        i = 9
-        while i > 0:
-            print(i)
-            i -= 1
 
     def get(self, request):
-        self.runFunc()
-        return Response({'test': 'it worked'})
+        logger.error('request')
+        logger.error(request.query_params)
+        if request.query_params:
+            logger.error('i exist')
+            return Response({'test': 'it worked'})
+        else:
+            return Response(
+                'please enter up to ten ordered int:->planeId, int:->num_passanger respectively'
+                'please send query to endpoint URL:port/capacity followed' \
+                'by ordered planeId and passanger numebrs respectively',
+                status=400
+            )
+
 
 
 
