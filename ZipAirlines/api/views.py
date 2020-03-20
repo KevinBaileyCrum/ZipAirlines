@@ -26,11 +26,13 @@ class CapacityView(APIView):
         logger.error(request.query_params)
         if request.query_params:
             logger.error('i exist')
-            for planeId, passengerNum in request.query_params.items():
+            for planeId, passengerNum in zip(request.query_params['planeId'], request.query_params['passengerNum']):
+            # for planeId, passengerNum in zip(request.query_params.items()):
+                # for planeId, passengerNum in request.query_params['planeId'], request.query_params['pas']:
                 print(planeId)
                 print(passengerNum)
-            #     self.findCapacity(planeId, passengerNum)
-            # for key in request.query_params:
+                #     self.findCapacity(planeId, passengerNum)
+                # for key in request.query_params:
                 # print(key)
             return Response({'test': 'it worked'})
         else:
