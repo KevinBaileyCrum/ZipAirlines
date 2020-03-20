@@ -14,6 +14,9 @@ class IndexView(APIView):
             status=400
         )
 
+
+
+
 class CapacityView(APIView):
 
     def findCapacity(self, planeId: int, passengerNum: int) -> int:
@@ -26,14 +29,17 @@ class CapacityView(APIView):
         logger.error(request.query_params)
         if request.query_params:
             logger.error('i exist')
-            for planeId, passengerNum in zip(request.query_params['planeId'], request.query_params['passengerNum']):
-            # for planeId, passengerNum in zip(request.query_params.items()):
-                # for planeId, passengerNum in request.query_params['planeId'], request.query_params['pas']:
-                print(planeId)
-                print(passengerNum)
-                #     self.findCapacity(planeId, passengerNum)
-                # for key in request.query_params:
-                # print(key)
+            for planeId, passengerNum in zip(request.query_params.getlist('planeId'), request.query_params.getlist('passengerNum')):
+                try:
+                    assert (isinstance(planeId and passengerNum, int))
+                    self.findCapacity(planeId, passengerNum)
+                except AssertionError as error:
+                    errorMsg = 'PARAMETER ERROR: please ensure both planeId and passengerNum are type int {}'.format(error)
+                    return Response(
+                        errorMsg,
+                        status=401
+                    )
+
             return Response({'test': 'it worked'})
         else:
             return Response(
