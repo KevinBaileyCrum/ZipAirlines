@@ -71,6 +71,25 @@ class TestZipHrEndpoints(unittest.TestCase):
         req = requests.get(request)
         self.assertEqual(req.status_code, 200)
 
+    def test_ten_plane_properly_formatted(self):
+        request = BASE_URL + ENDPOINT +'?planeId=1&passengerNum=250&planeId=2&passengerNum=250&planeId=3&passengerNum=250&planeId=4&passengerNum=250&planeId=5&passengerNum=250&planeId=6&passengerNum=250&planeId=7&passengerNum=250&planeId=8&passengerNum=250&planeId=9&passengerNum=250&planeId=10&passengerNum=250'
+        req = requests.get(request)
+        self.assertEqual(req.status_code, 200)
+
+    def test_same_planeId_increasing_capacity_for_monotonicity(self):
+        request = BASE_URL + ENDPOINT +'?planeId=3&passengerNum=10&planeId=3&passengerNum=100&planeId=3&passengerNum=1000'
+        req = requests.get(request)
+        req = req.json()
+        print(req[0][1])
+        i = 0
+        j = 1
+        while j < len(req):
+            self.assertTrue(req[i][1] > req[j][1])
+            i += 1
+            j += 1
+
+
+
 if __name__ == "__main__":
     unittest.main()
     ###################################################################
