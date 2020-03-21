@@ -31,8 +31,10 @@ class CapacityView(APIView):
         if request.query_params:
             try:
                 assert (len(request.query_params.getlist('planeId')) == len(request.query_params.getlist('passengerNum'))), 'MISSING PARAMETER ERROR: include a planeId and passengerNum for each plane'
+                assert (len(request.query_params.getlist('planeId')) > 0 and len(request.query_params.getlist('planeId')) < 11), 'planeId ERROR: please ensure queried planeId(s) is/are between 1 and 10'
                 for planeId, passengerNum in zip(request.query_params.getlist('planeId'), request.query_params.getlist('passengerNum')):
                         assert (planeId.isnumeric() and passengerNum.isnumeric()), 'PARAMETER ERROR: please ensure both planeId and passengerNum are type int'
+                        assert (float(planeId) > 0 and float(planeId) < 11), 'planeId ERROR: planeIds must be between 1 and 10'
                         minutesOfFlight = self.findCapacity(float(planeId), float(passengerNum))
                         return Response(
                             minutesOfFlight,

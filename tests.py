@@ -30,6 +30,12 @@ class TestZipHrEndpoints(unittest.TestCase):
     def test_for_missing_parameter_no_passengerNum(self):
         request = BASE_URL + ENDPOINT + '?planeId=5'
         req = requests.get(request)
+        self.assertEqual(req.status_code, 401)
+
+    def test_for_parameter_no_planeId(self):
+        request = BASE_URL + ENDPOINT + '?passengerNum=599'
+        req = requests.get(request)
+        self.assertEqual(req.status_code, 401)
 
     # test for capacity with one arg correctly formatted of the form:
     # BASE_URL/capacity?id=[1-10]&num_passenger=1
