@@ -76,6 +76,7 @@ class TestZipHrEndpoints(unittest.TestCase):
         req = requests.get(request)
         self.assertEqual(req.status_code, 200)
 
+    # for testing math id expect the same plane id with increasing capacity to drop in minutes to run
     def test_same_planeId_increasing_capacity_for_monotonicity(self):
         request = BASE_URL + ENDPOINT +'?planeId=3&passengerNum=10&planeId=3&passengerNum=100&planeId=3&passengerNum=1000'
         req = requests.get(request)
