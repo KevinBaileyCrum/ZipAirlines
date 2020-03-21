@@ -37,7 +37,8 @@ Capacity/ accepts params in the form of query string (https://en.wikipedia.org/w
 The parameters accepted by the api is the ordered pairing of planeId and passengerNum where planeId must be a number between 1 and 10 inclusively.  **The api only accepts between 1 and 10 (inclusively) planeId, passengerNum pairs **
 
 
-
+## Testing
+From repo root directory run `python3 tests.py`
 ------------
 
 

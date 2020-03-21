@@ -23,6 +23,6 @@ from api.views import CapacityView, IndexView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view()),
-    path('capacity/', CapacityView.as_view())
+    path('capacity/', CapacityView.as_view()),
 ]
 
