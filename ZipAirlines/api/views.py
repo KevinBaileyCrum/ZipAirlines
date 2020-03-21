@@ -6,6 +6,14 @@ from math import log
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+# statment of assumptions:
+#   allows user to input [1,10] planeId ranging from 1 to 10
+#   log is assumed to be base 2
+#   api allows for repeat of the same planeId to be queried
+#   assertions are made to capture to a certain degree of usefulness to describe what could have raised exception
+#       non-captured assertions of other malformed request queries are dictated to 404
+#   overflow is not checked for passengers since the value of float is beyond a normal plane's capacity
+
 class IndexView(APIView):
     def get(self, request):
         return Response(
@@ -13,9 +21,6 @@ class IndexView(APIView):
             'by ordered planeId and passanger numebrs respectively',
             status=400
         )
-
-
-
 
 class CapacityView(APIView):
 
