@@ -94,11 +94,17 @@ class TestZipHrEndpoints(unittest.TestCase):
             j += 1
 
     def trivial_math_test(self):
+        expPlaneId = 1
+        expPassengernum = 1
+        expLitersPerMinute = 0.002
+        expMinutesOfFlight = 100000.0
         request = BASE_URL + ENDPOINT +'?planeId=1&passengerNum=1'
         req = requests.get(request)
-        print(req)
-        req = req.json()
-        print(req)
+        data = req.json()
+        self.assertEqual(data[0]['planeId'], 1)
+        self.assertEqual(data[0]['passengerNum'], 1)
+        self.assertEqual(data[0]['litersPerMinute'], 1)
+        self.assertEqual(data[0]['minutesOfFlight'], 1)
 
 
 
