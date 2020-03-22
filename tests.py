@@ -85,13 +85,14 @@ class TestZipHrEndpoints(unittest.TestCase):
     def test_same_planeId_increasing_capacity_for_monotonicity(self):
         request = BASE_URL + ENDPOINT +'?planeId=3&passengerNum=10&planeId=3&passengerNum=100&planeId=3&passengerNum=1000'
         req = requests.get(request)
-        req = req.json()
+        data = req.json()
         i = 0
         j = 1
-        while j < len(req):
-            self.assertTrue(req[i][1] > req[j][1])
+        while j < len(data):
+            self.assertTrue(data[i]['minutesOfFlight'] > data[j]['minutesOfFlight'])
             i += 1
             j += 1
+
 
     def trivial_math_test(self):
         expPlaneId = 1
