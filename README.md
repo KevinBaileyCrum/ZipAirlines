@@ -43,7 +43,7 @@ From repo root directory run `python3 tests.py`
 
 
 ##### usage assumptions
-- log is assumed to be base 2
+- log is assumed to be a natural log of base e as per python's default `math.log`
 - api allows for repeat of the same planeId to be queried
 - assertions are made to capture to a certain degree of usefulness to describe what could have raised exception
 - non-captured assertions of other malformed request queries are dictated to 404

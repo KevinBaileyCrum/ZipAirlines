@@ -61,6 +61,11 @@ class TestZipHrEndpoints(unittest.TestCase):
         req = requests.get(request)
         self.assertEqual(req.status_code, 401)
 
+    def test_for_division_by_zero(self):
+        request = BASE_URL + ENDPOINT + '?planeId=1&passengerNum=0'
+        req = requests.get(request)
+        self.assertEqual(req.status_code, 401)
+
     ###################################################################
     # successful queries
     ###################################################################
@@ -81,13 +86,19 @@ class TestZipHrEndpoints(unittest.TestCase):
         request = BASE_URL + ENDPOINT +'?planeId=3&passengerNum=10&planeId=3&passengerNum=100&planeId=3&passengerNum=1000'
         req = requests.get(request)
         req = req.json()
-        print(req[0][1])
         i = 0
         j = 1
         while j < len(req):
             self.assertTrue(req[i][1] > req[j][1])
             i += 1
             j += 1
+
+    def trivial_math_test(self):
+        request = BASE_URL + ENDPOINT +'?planeId=1&passengerNum=1'
+        req = requests.get(request)
+        print(req)
+        req = req.json()
+        print(req)
 
 
 
@@ -103,5 +114,3 @@ if __name__ == "__main__":
         req = requests.get(request)
         self.assertEqual(req.status_code, 200)
 
-if __name__ == "__main__":
-    unittest.main()
