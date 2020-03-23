@@ -9,7 +9,7 @@ a Django Rest Framework for planes and the people that sit in them
 `$git clone https://github.com/kevinbaileycrum/zipairlines.git`
 ##### Installing Dependencies:
 With python3 install the dependencies noted by requirements.txt by running 
-`$ pip install -r requirements.txt --no-index --find-links file:///tmp/packages`
+`$ pip install -r requirements.txt`
 *note: usage of a virtual environment is recommended*
 ##### Change into Project Directory and run Server
 `$cd ZipAirlines`   
