@@ -14,15 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
-
-from api.views import CapacityView, IndexView
-
-# [1-9]|1[0-2] regex for 1 through 10
+from django.urls import path, include
 
 urlpatterns = [
+    path('capacity/', include('capacity.urls')),
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view()),
-    path('capacity/', CapacityView.as_view()),
 ]
 
