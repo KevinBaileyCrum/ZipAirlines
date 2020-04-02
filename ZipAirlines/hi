@@ -1,0 +1,30 @@
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  submit = () => {
+      // submit form
+   
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+    if (this.state.value == 10) {
+       submit()
+    }
+  }
+
+    return (
+      <form>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+      </form>
+    );
+  }
+}
