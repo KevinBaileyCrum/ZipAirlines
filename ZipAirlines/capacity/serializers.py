@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from .mathLib import findCapacity
 
 class CapacitySerializer(serializers.Serializer):
     planeId = serializers.ListField(
@@ -9,3 +10,4 @@ class CapacitySerializer(serializers.Serializer):
     )
     litersPerMinute = serializers.FloatField(required=False)
     minutesOfFlight = serializers.FloatField(required=False)
+

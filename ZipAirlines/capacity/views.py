@@ -8,14 +8,6 @@ class CapacityView(APIView):
         print(request.query_params)
         serializer = CapacitySerializer(data=request.query_params)
         serializer.is_valid(raise_exception=True)
-        # if not serializer.is_valid():
-        #     return Response(serializer.errors)
-        # else:
-
-        print(serializer.is_valid())
-        print(serializer.errors)
-        print('\n*****************\n')
         print(serializer)
-        # return Response(serializer.data)
         return Response('hello')
 
