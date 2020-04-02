@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from capacity.views import CapacityView
 
 urlpatterns = [
-    path('capacity/', include('capacity.urls')),
+    path('capacity/', CapacityView.as_view()),
     path('admin/', admin.site.urls),
 ]
 
