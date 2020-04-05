@@ -1,8 +1,7 @@
-from math import log
-
-def findCapacity(self, planeId: int, passengerNum: int) -> float:
-    fuelCapacity = 200 * planeId
-    litersPerMinute = (log(planeId) * .80) + (.002 * passengerNum) # natural log
-    minutesOfFlight = fuelCapacity / litersPerMinute
-    return (litersPerMinute, minutesOfFlight)
+class CapacityObject():
+    def __init__(self, planeId, passengerNum, litersPerMinute, minutesOfFlight):
+        self.planeId = planeId
+        self.passengerNum = passengerNum
+        self.litersPerMinute = litersPerMinute
+        self.minutesOfFlight = minutesOfFlight
 
